@@ -1,0 +1,115 @@
+[
+    {
+        "id": "602c3ef49d903994",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "85c3afabf2027fca",
+        "type": "inject",
+        "z": "602c3ef49d903994",
+        "name": "Temperatura",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "max",
+                "v": "100",
+                "vt": "str"
+            },
+            {
+                "p": "sensorId",
+                "v": "temp1",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "5",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 80,
+        "wires": [
+            [
+                "fefbba6b0b0b50ed"
+            ]
+        ]
+    },
+    {
+        "id": "fefbba6b0b0b50ed",
+        "type": "function",
+        "z": "602c3ef49d903994",
+        "name": "FuncionRandomica",
+        "func": "const randomValue={};\nrandomValue.sensorId=msg.sensorId;\nvar randomico = Math.random()*msg.max;\nrandomValue.val = randomico;\nrandomValue.timestamp=msg.payload;\nreturn randomValue;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 100,
+        "wires": [
+            [
+                "e665ee03ac2659f2"
+            ]
+        ]
+    },
+    {
+        "id": "0969ac71ff4ee339",
+        "type": "inject",
+        "z": "602c3ef49d903994",
+        "name": "Presion",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "max",
+                "v": "150",
+                "vt": "str"
+            },
+            {
+                "p": "sensorId",
+                "v": "press1",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 140,
+        "wires": [
+            [
+                "fefbba6b0b0b50ed"
+            ]
+        ]
+    },
+    {
+        "id": "e665ee03ac2659f2",
+        "type": "debug",
+        "z": "602c3ef49d903994",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 100,
+        "wires": []
+    }
+]
